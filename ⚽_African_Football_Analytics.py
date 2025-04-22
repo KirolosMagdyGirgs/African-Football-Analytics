@@ -21,8 +21,14 @@ st.sidebar.markdown(
 )
 
 
-# Sidebar for minutes filter
+# Sidebar - League Selector + Minutes Filter
 st.sidebar.title('Filters')
+
+league_option = st.sidebar.selectbox(
+    "Select League",
+    ["Egyptian Premier League", "South African PSL"]
+)
+
 minutes_var = st.sidebar.number_input("Minimum Minutes Played", value=400, step=50)
 apply_button = st.sidebar.button("Apply Filter")
 position_group_params = {
@@ -79,11 +85,15 @@ position_group_params = {
             }
 
 # Load and cache data
-def load_data():
-    df = pd.read_excel("Player Season Stats.xlsx")
-    df = df[df['Time Played'] >= minutes_var]
+def load_data(league_name, minutes):
+    file_map = {
+        "Egyptian Premier League": "Player Season Stats - EPL.xlsx",
+        "South African PSL": "Player Season Stats - PSL.xlsx"
+    }
+    file_path = f"{file_map[league_name]}"
+    df = pd.read_excel(file_path)
+    df = df[df['Time Played'] >= minutes]
     return df
-
 # Compute percentiles
 def compute_percentiles(df):
     exclude_columns = ['index', 'Player Id', 'Full Name', 'Match Name', 'Team Name', 'Team Id', 'Last Updated', '90s',
@@ -143,13 +153,14 @@ def compute_percentiles(df):
     return pd.concat([df, percentile_df], axis=1)
 
 if apply_button:
-    df = load_data()
+    df = load_data(league_option, minutes_var)
     df = compute_percentiles(df)
     st.session_state.df = df
     st.session_state.df_loaded = True
 
 if st.session_state.get("df_loaded", False):
     df = st.session_state.df
+    st.markdown(f"### 📋 {league_option} - Season 24/25")
     tab1, tab2, tab3, tab4 = st.tabs([
         "Pizza Chart (Single Player)",
         "Pizza Chart (Comparison)",
