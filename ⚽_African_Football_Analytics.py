@@ -11,7 +11,7 @@ import textwrap
 
 
 # Set up the page
-st.set_page_config(page_title=' Africasn Legaues Analytics', layout='centered', page_icon='⚽')
+st.set_page_config(page_title=' Africasn Football Analytics', layout='centered', page_icon='⚽')
 
 # Sidebar branding
 st.sidebar.image("Afican football analytics logo.png", width=300)  # replace with local or URL path
