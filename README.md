@@ -1,4 +1,5 @@
-#⚽ African Football Analytics - Streamlit App
+⚽#African Football Analytics - Streamlit App
+
 Live App: african-football-analytics.streamlit.app
 
 ###Repository Purpose:
