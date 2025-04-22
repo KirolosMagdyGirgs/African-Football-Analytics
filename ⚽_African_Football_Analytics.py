@@ -171,13 +171,24 @@ if st.session_state.get("df_loaded", False):
     with tab1:
         st.write("## Player Pizza Chart")
 
-        teams = sorted(set(t for sub in df['Team Name'].dropna().str.split(', ') for t in sub))
+        # Step 1: Select Position Group
+        position_groups = sorted(df['Position Group'].dropna().unique())
+        position_group_var = st.selectbox("Select a position group:", position_groups)
+
+        # Step 2: Filter by position group, then get teams
+        pos_filtered_df = df[df['Position Group'] == position_group_var]
+        teams = sorted(set(t for sub in pos_filtered_df['Team Name'].dropna().str.split(', ') for t in sub))
+
+        # Step 3: Select team
         team_name_var = st.selectbox("Select a team:", teams)
-        filtered_df = df[df['Team Name'].str.contains(team_name_var, na=False)]
+
+        # Step 4: Filter by team
+        filtered_df = pos_filtered_df[pos_filtered_df['Team Name'].str.contains(team_name_var, na=False)]
+
+        # Step 5: Select player
         player_name_var = st.selectbox("Select a player:", filtered_df['Match Name'].sort_values().unique())
 
         if st.button("Show Chart"):
-          
             player_row = filtered_df[filtered_df['Match Name'] == player_name_var].iloc[0]
             position_group = player_row['Position Group']
             params = position_group_params.get(position_group)
@@ -188,7 +199,7 @@ if st.session_state.get("df_loaded", False):
                 values = [int(player_row[p]) if pd.notna(player_row[p]) else 0 for p in params]
                 readable_params = [
                     "\n".join(textwrap.wrap(
-                        re.sub(r"([A-Z])", r" \1", p.replace(' p90 Percentile', '')).strip(), width=14 # witdth determines the space allowed for the label
+                        re.sub(r"([A-Z])", r" \1", p.replace(' p90 Percentile', '')).strip(), width=14
                     )) for p in params
                 ]
 
@@ -220,23 +231,17 @@ if st.session_state.get("df_loaded", False):
                         bbox=dict(edgecolor="#F2F2F2", facecolor="cornflowerblue", boxstyle="round,pad=0.05", lw=1)
                     )
                 )
-                # 🔧 Adjust parameter label positions based on angle
+
                 num_params = len(readable_params)
-                for i, text in enumerate(ax.texts[:num_params]):  # Only stat labels, not value texts
+                for i, text in enumerate(ax.texts[:num_params]):
                     angle = 360 * i / num_params
-
-                    # Move labels outward or inward slightly
                     x, y = text.get_position()
-                    if 90 <= angle <= 270:  # Top half
-                        text.set_position((x, y + 6))
-                    else:  # Bottom half
-                        text.set_position((x, y + 6))
-
+                    text.set_position((x, y + 6))  # Adjust label position
 
                 fig.text(0.515, 0.97, f'{player_name_var} - {team_name_var} - {int(player_row["Time Played"])} mins',
-                         size=20, ha="center", color="#F2F2F2")
+                        size=20, ha="center", color="#F2F2F2")
                 fig.text(0.515, 0.942, f'Per 90 Percentile Rank vs {position_group} (Minimum {minutes_var} Minutes Played) | 24/25',
-                         size=15, ha="center", color="#F2F2F2")
+                        size=15, ha="center", color="#F2F2F2")
                 fig.text(0.99, 0.005, "Data: Opta\nInspired by: McKay Johns", size=14, color="#F2F2F2", ha="right")
                 fig.text(0.03, 0.005, "Twitter: African Football Analytics", size=14, color="#F2F2F2", ha="left")
 
@@ -249,8 +254,9 @@ if st.session_state.get("df_loaded", False):
                     - **Lay-off**: A pass by a striker with back to goal played to a teammate.
                     - **Overrun**: Heavy touch in a dribble.
                     - **Dispossessed**: Losing possession under pressure.
-                    - **Blocks**: A blocekd pass or cross.
+                    - **Blocks**: A blocked pass or cross.
                     """)
+
 
 
     with tab2:
