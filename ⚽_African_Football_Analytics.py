@@ -528,4 +528,4 @@ if st.session_state.get("df_loaded", False):
                 - **Other Goals**: Goals not scored with foot or head.
                 """)
 else:
-    st.info("👈Please apply a minutes filter from the sidebar to load data.")
+    st.info("👈Please apply League and minutes filters from the sidebar to load data.")
