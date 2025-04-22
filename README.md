@@ -1,71 +1,62 @@
 <h1 style="font-size: 2.2em;">⚽ African Football Analytics</h1>
 
 <p><strong>Live App:</strong> 
-<a href="https://african-football-analytics.streamlit.app" target="_blank">🌍 african-football-analytics.streamlit.app</a>
-</p>
+<a href="https://african-football-analytics.streamlit.app" target="_blank" rel="noopener noreferrer">
+🌍 african-football-analytics.streamlit.app</a></p>
 
 
-
-###Repository Purpose:
+<h2 style="font-size: 2.2em;">Repository Purpose:</h2>
 This Streamlit application provides an interactive dashboard for analyzing African football player performance data from the 2024/2025 season using rich visualizations and per-position percentiles. The app is tailored for analysts, scouts, and football enthusiasts to gain deep insights into player metrics across various roles on the pitch.
 
 
-###🧠 Key Features
-- Per-player and player-vs-player Pizza Charts with percentile-based radar visualization
+<h2 style="font-size: 2.2em;">🧠 Key Features</h2>
 
-- Interactive filters by team, position group, player name
+<ul>
+  <li>Per-player and player-vs-player Pizza Charts with percentile-based radar visualization</li>
+  <li>Interactive filters by team, position group, player name</li>
+  <li>Full statistical tables (total & per 90), sortable and filterable</li>
+  <li>Percentile coloring to highlight strengths and weaknesses</li>
+  <li>Glossary for advanced metrics</li>
+</ul>
 
-- Full statistical tables (total & per 90), sortable and filterable
 
-- Percentile coloring to highlight strengths and weaknesses
+<h2 style="font-size: 2.2em;">🧭 Tabs Overview</h2>
+<h3 style="font-size: 2.2em;">1. Pizza Chart (Single Player)</h3>
+<ul>
+  <li>Visualize performance profile for a selected player</li>
+  <li>Select a team → choose a player → generate pizza chart</li>
+  <li>Metrics are tailored based on player’s position group</li>
+  <li>Shows percentile rank across selected KPIs</li>
+  <li>Dynamic labels and visual feedback</li>
+  <li>Glossary expands on metric definitions (e.g., Progressive Passes, Lay-offs)</li>
+</ul>
 
-- Glossary for advanced metrics
 
-###🧭 Tabs Overview
-1. Pizza Chart (Single Player)
-📌 Visualize performance profile for a selected player
+<h3 style="font-size: 2.2em;">2. Pizza Chart (Comparison)</h3>
+<ul>
+  <li>Compare two players head-to-head</li>
+  <li>Choose a position group, then pick a player from each team</li>
+  <li>Pizza chart shows both players’ percentiles overlaid</li>
+  <li>Intuitive comparison with contrasting color palettes</li>
+  <li>Clear time played and title annotations</li>
+  <li>Useful for transfer evaluation or tactical scouting</li>
+</ul>
 
-- Select a team → choose a player → generate pizza chart
+<h3 style="font-size: 2.2em;">3. Player Total Stats</h3>
+<ul>
+  <li>Access raw and percentile-enriched total season stats</li>
+  <li>Filter by position group, team, and player</li>
+  <li>Multiselect to choose specific metrics of interest</li>
+  <li>Table highlights percentile columns with color gradients</li>
+  <li>Designed for data-driven scouts or performance analysts</li>
+</ul>
 
-- Metrics are tailored based on player’s position group
+<h3 style="font-size: 2.2em;">4. Player Per 90 Stats</h3>
+<ul>
+  <li>Standardized stats per 90 minutes with contextual ranking</li>
+  <li>Focus on rate-based metrics (normalized over time)</li>
+  <li>Percentiles help compare performance fairly regardless of minutes played</li>
+  <li>Ideal for evaluating impact of bench players or rising talents</li>
+  <li>Multiselect to choose specific metrics of interest</li>
+</ul>
 
-- Shows percentile rank across selected KPIs
-
-- Dynamic labels and visual feedback
-
-- Glossary expands on metric definitions (e.g., Progressive Passes, Lay-offs)
-
-2. Pizza Chart (Comparison)
-📌 Compare two players head-to-head
-
-- Choose a position group, then pick a player from each team
-
-- Pizza chart shows both players’ percentiles overlaid
-
-- Intuitive comparison with contrasting color palettes
-
-- Clear time played and title annotations
-
-- Useful for transfer evaluation or tactical scouting
-
-3. Player Total Stats
-📌 Access raw and percentile-enriched total season stats
-
-- Filter by position group, team, and player
-
-- Multiselect to choose specific metrics of interest
-
-- Table highlights percentile columns with color gradients
-
-- Designed for data-driven scouts or performance analysts
-
-4. Player Per 90 Stats
-📌 Standardized stats per 90 minutes with contextual ranking
-
-- Focus on rate-based metrics (normalized over time)
-
-- Percentiles help compare performance fairly regardless of minutes played
-
-- Ideal for evaluating impact of bench players or rising talents
-
-- Multiselect to choose specific metrics of interest
