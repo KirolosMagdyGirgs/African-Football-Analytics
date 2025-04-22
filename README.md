@@ -1,6 +1,7 @@
-# African Football Analytics - Streamlit App
+<h1 style="font-size: 2.2em;">⚽ African Football Analytics</h1>
 
-Live App: african-football-analytics.streamlit.app
+<h3 style="font-size: 2.2em;"> Live App: african-football-analytics.streamlit.app</h3>
+
 
 ###Repository Purpose:
 This Streamlit application provides an interactive dashboard for analyzing African football player performance data from the 2024/2025 season using rich visualizations and per-position percentiles. The app is tailored for analysts, scouts, and football enthusiasts to gain deep insights into player metrics across various roles on the pitch.
