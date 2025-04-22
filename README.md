@@ -1,6 +1,7 @@
 <h1 style="font-size: 2.2em;">⚽ African Football Analytics</h1>
 
-<h3 style="font-size: 2.2em;"> Live App: african-football-analytics.streamlit.app</h3>
+<p><strong>Live App:</strong> <a href="https://african-football-analytics.streamlit.app" target="_blank">african-football-analytics.streamlit.app</a></p>
+
 
 
 ###Repository Purpose:
