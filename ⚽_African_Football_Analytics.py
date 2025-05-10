@@ -161,7 +161,7 @@ if apply_button:
     st.session_state.df_loaded = True
 
 if st.session_state.get("df_loaded", False):
-    df = st.session_state.df
+    st.markdown(f"### 📅 Data as of 10-05-2025")
     st.markdown(f"### 📋 {league_option} - Season 24/25")
     st.markdown(f"### 📅 Data as of 10-05-2025")
     tab1, tab2, tab3, tab4 = st.tabs([
