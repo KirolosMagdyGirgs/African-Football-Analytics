@@ -51,7 +51,7 @@ position_group_params = {
 
                 'Center Backs': ['Total Clearances p90 Percentile', 'Interceptions p90 Percentile',
                                  'Recoveries p90 Percentile', 'Tackles Won p90 Percentile','Blocked Shots p90 Percentile','Blocks p90 Percentile',
-                                 'Aerial Duels won p90 Percentile', 'Ground Duels won p90 Percentile',
+                                 'Aerial Duels won p90 Percentile', 'Ground Duels won p90 Percentile','Duels won % p90 Percentile',
                                  'Clean Sheets p90 Percentile', 'Goals Conceded Inside Box p90 Percentile',
                                  'Goals Conceded p90 Percentile', 'Open Play Pass Success % p90 Percentile',
                                  'ProgressivePasses p90 Percentile', 'FinalThirdPasses p90 Percentile','Successful Long Passes p90 Percentile',
@@ -81,7 +81,7 @@ position_group_params = {
                              'ProgressivePasses p90 Percentile', 'Total Shots p90 Percentile',
                              'Shots On Target ( inc goals ) p90 Percentile', 'Shots Per Goal p90 Percentile',
                              'Conversion Rate p90 Percentile','Set Pieces Goals p90 Percentile','Minutes Per Goal Percentile','Winning Goal p90 Percentile'
-                             , 'Total Touches In Opposition Box p90 Percentile','Aerial Duels won p90 Percentile', 'Ground Duels won p90 Percentile',
+                             , 'Total Touches In Opposition Box p90 Percentile','Aerial Duels won p90 Percentile', 'Ground Duels won p90 Percentile','Duels won % p90 Percentile',
                              'Offsides p90 Percentile']
             }
 
