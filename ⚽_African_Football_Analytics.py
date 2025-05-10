@@ -249,7 +249,7 @@ if st.session_state.get("df_loaded", False):
                         size=20, ha="center", color="#F2F2F2")
                 fig.text(0.515, 0.942, f'Per 90 Percentile Rank vs {position_group} (Minimum {minutes_var} Minutes Played) | 24/25',
                         size=15, ha="center", color="#F2F2F2")
-                fig.text(0.99, 0.005, "Data: Opta\nInspired by: McKay  ", size=14, color="#F2F2F2", ha="right")
+                fig.text(0.99, 0.005, "Data: Opta\nInspired by: McKay Johns", size=14, color="#F2F2F2", ha="right")
                 fig.text(0.03, 0.005, "Twitter: African Football Analytics", size=14, color="#F2F2F2", ha="left")
 
                 st.pyplot(fig)
@@ -366,7 +366,7 @@ if st.session_state.get("df_loaded", False):
 
                 fig.text(
                     0.99, 0.005,
-                    "Data: Opta\nInspired by: McKay  ",
+                    "Data: Opta\nInspired by: McKay Johns",
                     size=14, color="#F2F2F2", ha="right"
                 )
 
