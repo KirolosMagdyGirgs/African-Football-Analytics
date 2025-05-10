@@ -144,9 +144,9 @@ def compute_percentiles(df):
             if len(scores) == 0:
                 continue
             if stat in negative_stats:
-                percentiles = group_df[stat].apply(lambda x: 100 - math.floor(stats.percentileofscore(scores, x)))
+                percentiles = group_df[stat].apply(lambda x: 100 - math.floor(stats.percentileofscore(scores, x, kind='rank')))
             else:
-                percentiles = group_df[stat].apply(lambda x: math.floor(stats.percentileofscore(scores, x)))
+                percentiles = group_df[stat].apply(lambda x: math.floor(stats.percentileofscore(scores, x, kind='rank')))
             for idx, value in percentiles.items():
                 percentile_data.setdefault(idx, {})[f"{stat} Percentile"] = value
 
