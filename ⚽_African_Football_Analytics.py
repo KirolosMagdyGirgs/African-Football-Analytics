@@ -31,6 +31,8 @@ league_option = st.sidebar.selectbox(
     ["Egyptian Premier League", "South African PSL"]
 )
 
+
+
 minutes_var = st.sidebar.number_input("Minimum Minutes Played", value=400, step=50)
 apply_button = st.sidebar.button("Apply Filter")
 position_group_params = {
@@ -87,6 +89,7 @@ position_group_params = {
             }
 
 # Load and cache data
+@st.cache_data
 def load_data(league_name, minutes):
     file_map = {
         "Egyptian Premier League": "Player Season Stats - EPL.xlsx",
