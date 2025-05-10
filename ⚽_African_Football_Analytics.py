@@ -144,9 +144,13 @@ def compute_percentiles(df):
             if len(scores) == 0:
                 continue
             if stat in negative_stats:
-                percentiles = group_df[stat].apply(lambda x: 100 - round(stats.percentileofscore(scores, x, kind='rank')))
+                percentiles = group_df[stat].apply(
+                    lambda x: 0 if x == scores.max() else 100 - round(stats.percentileofscore(scores, x, kind='rank'))
+                )
             else:
-                percentiles = group_df[stat].apply(lambda x: round(stats.percentileofscore(scores, x, kind='rank')))
+                percentiles = group_df[stat].apply(
+                    lambda x: 100 if x == scores.max() else round(stats.percentileofscore(scores, x, kind='rank'))
+                )
             for idx, value in percentiles.items():
                 percentile_data.setdefault(idx, {})[f"{stat} Percentile"] = value
 
