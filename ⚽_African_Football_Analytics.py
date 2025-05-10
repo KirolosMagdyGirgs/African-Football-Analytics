@@ -89,7 +89,7 @@ position_group_params = {
             }
 
 # Load and cache data
-data_date = "10-05-2025"   # 🔁 Change this line in your automation script
+data_date = "sds"   # 🔁 Change this line in your automation script
 
 @st.cache_data
 def load_data(league_name, minutes, version_key):
