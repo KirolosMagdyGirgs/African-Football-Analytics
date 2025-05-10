@@ -60,7 +60,6 @@ position_group_params = {
                                  ],
 
                 'Midfielders': ['Goals p90 Percentile','Attempts from Set Pieces p90 Percentile', 'Goal Assists p90 Percentile',
-                                'Second Goal Assists p90 Percentile',
                                 'Open Play Pass Success % p90 Percentile', 'Through balls p90 Percentile',
                                 'FinalThirdPasses p90 Percentile', 'ProgressivePasses p90 Percentile',
                                 'Chances Created p90 Percentile','Successful Crosses & Corners p90 Percentile', 'Touches p90 Percentile',
@@ -69,7 +68,7 @@ position_group_params = {
                                 'Recoveries p90 Percentile', 'Times Tackled p90 Percentile'
                                 ,'Total Fouls Conceded p90 Percentile'],
 
-                'Wingers': ['Goals p90 Percentile', 'Goal Assists p90 Percentile','Second Goal Assists p90 Percentile', 'Chances Created p90 Percentile',
+                'Wingers': ['Goals p90 Percentile', 'Goal Assists p90 Percentile', 'Chances Created p90 Percentile',
                             'Successful Crosses & Corners p90 Percentile','Successful Crosses open play p90 Percentile', 'ProgressivePasses p90 Percentile',
                             'FinalThirdPasses p90 Percentile', 'Touches p90 Percentile',
                             'Total Touches In Opposition Box p90 Percentile', 'Dribbles success % p90 Percentile',
@@ -258,7 +257,6 @@ if st.session_state.get("df_loaded", False):
                 with st.expander("Metric Glossary"):
                     st.write("""
                     - **Progressive Passes**: A pass that moves the ball closer to the opponent goal by 25% & at least 5m vertically.
-                    - **Second Assist**: The last action before an assist.
                     - **Lay-off**: A pass by a striker with back to goal played to a teammate.
                     - **Overrun**: Heavy touch in a dribble.
                     - **Dispossessed**: Losing possession under pressure.
@@ -383,7 +381,6 @@ if st.session_state.get("df_loaded", False):
                 with st.expander("Metric Glossary"):
                     st.write("""
                     - **Progressive Passes**: A pass that moves the ball closer to the opponent goal by 25% & at least 5m vertically.
-                    - **Second Assist**: The last action before an assist.
                     - **Lay-off**: A pass by a striker with back to goal played to a teammate.
                     - **Overrun**: Heavy touch in a dribble.
                     - **Dispossessed**: Losing possession under pressure.
@@ -462,7 +459,6 @@ if st.session_state.get("df_loaded", False):
                 st.write("""
                 - **Overrun**: Heavy touch in a dribble.
                 - **Progressive Passes**: A pass that moves the ball closer to the opponent goal by 25% & at least 5 m vertically.
-                - **Second Assist**: The last action before an assist.
                 - **Lay-off**: A pass by a striker who has received the ball with back to goal.
                 - **Dispossessed**: Losing the ball under pressure.
                 - **GK Distribution**: Successful goalkeeper passes.
@@ -534,7 +530,6 @@ if st.session_state.get("df_loaded", False):
                 st.write("""
                 - **Overrun**: Heavy touch in a dribble.
                 - **Progressive Passes**: A pass that moves the ball closer to the opponent goal by 25% & at least 5 m vertically.
-                - **Second Assist**: The last action before an assist.
                 - **Lay-off**: A pass by a striker who has received the ball with back to goal.
                 - **Dispossessed**: Losing the ball under pressure.
                 - **GK Distribution**: Successful goalkeeper passes.
