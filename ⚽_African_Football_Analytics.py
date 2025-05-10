@@ -89,8 +89,10 @@ position_group_params = {
             }
 
 # Load and cache data
+data_date = 10-05-2025")   # 🔁 Change this line in your automation script
+
 @st.cache_data
-def load_data(league_name, minutes):
+def load_data(league_name, minutes, version_key):
     file_map = {
         "Egyptian Premier League": "Player Season Stats - EPL.xlsx",
         "South African PSL": "Player Season Stats - PSL.xlsx"
@@ -158,15 +160,18 @@ def compute_percentiles(df):
     return pd.concat([df, percentile_df], axis=1)
 
 if apply_button:
-    df = load_data(league_option, minutes_var)
+    df = load_data(league_option, version_key=data_date)
     df = compute_percentiles(df)
     st.session_state.df = df
     st.session_state.df_loaded = True
 
+
+
+
 if st.session_state.get("df_loaded", False):
     df = st.session_state.df
     st.markdown(f"### 📋 {league_option} - Season 24/25")
-    st.markdown(f"### 📅 Data as of dd")
+    st.markdown(f"### 📅 Data as of {data_date}")
     tab1, tab2, tab3, tab4 = st.tabs([
         "Pizza Chart (Single Player)",
         "Pizza Chart (Comparison)",
