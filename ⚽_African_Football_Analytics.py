@@ -56,7 +56,7 @@ position_group_params = {
                                  'Goals Conceded p90 Percentile', 'Open Play Pass Success % p90 Percentile',
                                  'ProgressivePasses p90 Percentile', 'FinalThirdPasses p90 Percentile','Successful Long Passes p90 Percentile',
                                  'Yellow Cards p90 Percentile' ,'Total Red Cards p90 Percentile','Total Fouls Conceded p90 Percentile',
-                                 'Set Pieces Goals p90 Percentile'
+                                 'Goals p90 Percentile'
                                  ],
 
                 'Midfielders': ['Goals p90 Percentile','Attempts from Set Pieces p90 Percentile', 'Goal Assists p90 Percentile',
@@ -76,7 +76,7 @@ position_group_params = {
                             'Attempts from Set Pieces p90 Percentile', 'Total Shots p90 Percentile', 'Shots On Target ( inc goals ) p90 Percentile'
                             ],
 
-                'Strikers': ['Goals p90 Percentile', 'Headed Goals p90 Percentile', 'Goal Assists p90 Percentile',
+                'Strikers': ['Goals p90 Percentile','Penalty Goals p90 Percentile', 'Headed Goals p90 Percentile', 'Goal Assists p90 Percentile',
                              'Successful Lay-offs p90 Percentile', 'Chances Created p90 Percentile',
                              'ProgressivePasses p90 Percentile', 'Total Shots p90 Percentile',
                              'Shots On Target ( inc goals ) p90 Percentile', 'Shots Per Goal p90 Percentile',
@@ -142,14 +142,22 @@ def compute_percentiles(df):
             scores = group_df[stat].dropna()
             if len(scores) == 0:
                 continue
+
+            # If all values are zero, assign 0 percentile to all
+            if (scores == 0).all():
+                for idx in scores.index:
+                    percentile_data.setdefault(idx, {})[f"{stat} Percentile"] = 0
+                continue
+
             if stat in negative_stats:
                 percentiles = group_df[stat].apply(
                     lambda x: 0 if x == scores.max() else 100 - round(stats.percentileofscore(scores, x, kind='rank'))
                 )
             else:
                 percentiles = group_df[stat].apply(
-                    lambda x: 100 if x == scores.max() else round(stats.percentileofscore(scores, x, kind='rank'))
+                    lambda x: round(stats.percentileofscore(scores, x, kind='rank'))
                 )
+
             for idx, value in percentiles.items():
                 percentile_data.setdefault(idx, {})[f"{stat} Percentile"] = value
 
@@ -167,7 +175,7 @@ if apply_button:
 if st.session_state.get("df_loaded", False):
     df = st.session_state.df
     st.markdown(f"### 📋 {league_option} - Season 24/25")
-    st.markdown(f"### 📅 Data as of 10-05-2025")
+    st.markdown(f"### 📅 Data as of 22-05-2025")
     tab1, tab2, tab3, tab4 = st.tabs([
         "Pizza Chart (Single Player)",
         "Pizza Chart (Comparison)",
@@ -261,6 +269,7 @@ if st.session_state.get("df_loaded", False):
                     - **Overrun**: Heavy touch in a dribble.
                     - **Dispossessed**: Losing possession under pressure.
                     - **Blocks**: A blocked pass or cross.
+                    - **Set-piece Goal**: Goals directly from a free-kick.         
                     """)
 
 
@@ -385,6 +394,7 @@ if st.session_state.get("df_loaded", False):
                     - **Overrun**: Heavy touch in a dribble.
                     - **Dispossessed**: Losing possession under pressure.
                     - **Blocks**: A blocekd pass or cross.
+                    - **Set-piece Goal**: Goals directly from a free-kick.
                     """)
     with tab3:
         st.write("## Players Total Stats Table")
@@ -464,6 +474,7 @@ if st.session_state.get("df_loaded", False):
                 - **GK Distribution**: Successful goalkeeper passes.
                 - **GK Launches**: Long balls launched forward.
                 - **Other Goals**: Goals not scored with foot or head.
+                - **Set-piece Goal**: Goals directly from a free-kick.
                 """)
 
 
@@ -535,6 +546,7 @@ if st.session_state.get("df_loaded", False):
                 - **GK Distribution**: Successful goalkeeper passes.
                 - **GK Launches**: Long balls launched forward.
                 - **Other Goals**: Goals not scored with foot or head.
+                - **Set-piece Goal**: Goals directly from a free-kick.
                 """)
 else:
     st.info("👈Please apply league and minutes filters from the sidebar to load data.")

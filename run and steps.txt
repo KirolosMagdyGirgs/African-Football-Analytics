@@ -1,0 +1,10 @@
+## on visual studio code
+
+cd "D:\Projects\football analysis\Players Season Stats\African-Football-Analytics"
+
+streamlit run "⚽_African_Football_Analytics.py"
+########################################################
+1- download event data for psl and epl
+2- download player stats data 
+3- upload the files
+4- change the as of date in the repo
